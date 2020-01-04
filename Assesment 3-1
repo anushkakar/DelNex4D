@@ -1,0 +1,174 @@
+package _String2;
+
+public class Car {
+	String CarName;
+	String Colour;
+	int year;
+	
+	
+	
+	public String getCarName() {
+		return CarName;
+	}
+
+
+
+	public void setCarName(String carName) {
+		CarName = carName;
+	}
+
+
+
+	public String getColour() {
+		return Colour;
+	}
+
+
+
+	public void setColour(String colour) {
+		Colour = colour;
+	}
+
+
+
+	public int getYear() {
+		return year;
+	}
+
+
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+
+
+	public Car(String CarName, String Colour, int year) {
+		super();
+		this.CarName = CarName;
+		this.Colour = Colour;
+		this.year = year;
+		}
+
+
+
+	public Car() {
+		super();
+	}
+	
+	
+	
+	
+}
+________
+
+package _String2;
+import java.util.ArrayList;
+
+
+public class Showroom{
+
+		String Showroomname;
+		int ShowroomNo;
+
+			ArrayList<Car> cars;
+			
+			
+			
+
+			public Showroom(String showroomname, int showroomNo, ArrayList<Car> cars) {
+				super();
+				Showroomname = showroomname;
+				ShowroomNo = showroomNo;
+				this.cars = cars;
+			}
+
+			
+			
+			public Showroom() {
+				super();
+			}
+
+
+
+			public String getShowroomname() {
+				return Showroomname;
+			}
+
+			public void setShowroomname(String showroomname) {
+				Showroomname = showroomname;
+			}
+
+			public int getShowroomNo() {
+				return ShowroomNo;
+			}
+
+			public void setShowroomNo(int showroomNo) {
+				ShowroomNo = showroomNo;
+			}
+
+			public ArrayList<Car> getCars() {
+				return cars;
+			}
+
+			public void setCars(ArrayList<Car> cars) {
+				this.cars = cars;
+			}
+			
+
+	}
+
+--------------------
+package _String2;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import _Author.Book;
+
+public class Getcars {
+ public static void main(String[] args) {
+	Car c1 = new Car("Alto","Blue", 2010);
+	Car c2 = new Car("Maruti","Red", 2012);
+	Car c3 = new Car("Creta","White", 2015);
+	Car c4 = new Car("SwiftDzire","Blue", 2010);
+	Car c5 = new Car("HondaCity","Silver", 2009);
+	
+	
+	Showroom sr = new Showroom();
+	sr.setShowroomname("Deep Hyundai");
+	sr.setShowroomNo(1);
+	
+	
+	Showroom sr1 = new Showroom();
+	sr1.setShowroomname("Kumar Autos");
+	sr1.setShowroomNo(2);
+	
+	
+	HashMap<Integer, ArrayList<Car>> hm= new HashMap<>();
+	
+	
+	ArrayList<Car> Cars1=new ArrayList<>();
+	Cars1.add(c1);
+	Cars1.add(c2);
+	Cars1.add(c3);
+	
+	sr.setCars(Cars1);
+
+	ArrayList<Car> Cars2=new ArrayList<>();
+	Cars2.add(c4);
+	Cars2.add(c5);
+	sr1.setCars(Cars2);
+	
+	hm.put(sr.getShowroomNo(), sr.getCars());
+	hm.put(sr1.getShowroomNo(), sr1.getCars());
+	
+
+	for(Car a: hm.get(sr1.ShowroomNo))
+	{
+		System.out.println(a.CarName);
+	}
+
+	}
+}
+
